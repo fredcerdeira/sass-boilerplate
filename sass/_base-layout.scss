@@ -1,0 +1,45 @@
+
+
+//colors
+$red : #f5045f;
+$green: #c0e709;
+$light-grey: #ddd;
+
+//functions
+@function border-color($color) {
+	@return desaturate(darken($color, 10%), 10); 
+}
+
+//mixins
+@mixin colored_box ($bg, $border) {
+	@extend .box;
+	background: $bg;
+	border-color: border-color($border);
+} 
+ 
+
+body {
+	font-size: 62.5%;
+	padding: 1.5em;
+	font-family: Georgia;
+}
+
+.box {
+	border-radius: 10px;
+	border: 2px solid #000;
+	padding: 1em;
+	margin: 0 0 1em 0;	
+}
+
+.important {
+	@include colored_box($light-grey, $red );
+} 
+
+.success {
+	@extend .box;
+	border-color: border-color($green);
+}
+
+.btn {
+	background: image-url('sprite.png');	
+}
